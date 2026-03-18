@@ -9,16 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            // Using the native SwiftUI Image initializer is safer
+            NavigationLink(destination: DocumentView()) {
+                VStack {
+                    Image("letter")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 900) // Optional: give it a defined size
+                    
+                    Spacer()
+                }
+                .padding()
+            }
+            .navigationTitle("Documents") // Good practice for NavigationStack
         }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
